@@ -12,6 +12,7 @@
     display: inline;
     justify-content: space-between;
     align-items: center;
+    margin-left: 50rem;
 }
 
 .content-special {
@@ -19,11 +20,11 @@
     align-items: center;
 }
 
-.content-special h5 {
+.content-special div{
     margin-right: 1rem; /* Space between "Amount" and "0" */
 }
 
-.content-special h6 {
+.content-special input {
     margin-left: 0.5rem; /* Space between "Amount" and "0" */
     margin-right: 1rem; /* Space between "0" and the button */
 }
@@ -34,4 +35,6 @@ button {
    width:5rem;
    background-color: brown;
    color: whitesmoke;
+   margin-top: 15px;
+   margin-left: 25px;
 }

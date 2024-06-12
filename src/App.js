@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Layout/Header";
-import Summary from "./components/Layout/Summary/Summary";
+import Summary from "./components/Summary/Summary";
 import MealsItem from "./components/Meals/MealsItem";
 import Meals from "./components/Meals/Meals";
 const App =()=> {
@@ -12,10 +12,10 @@ const App =()=> {
   ]
   return (
     <React.Fragment>
-      <Header/>
-      <Summary/>
-      <MealsItem Meals = {MealsList}/>
-      <Meals data={MealsList}/>
+      <Header/>   {/* Responsible for Heading*/}
+      <Summary/> {/* Responsible for content of hotel */}
+      <MealsItem Meals = {MealsList}/> {/* it is meals data available in hotel */}
+      <Meals data={MealsList}/ > {/* it display the all meals data */}
     </React.Fragment>
 
   );

@@ -1,36 +1,48 @@
-import MealsItem from "./MealsItem"
-import './Meals.css'
+import React, { useState } from "react";
+import MealsItem from "./MealsItem";
+import MealsForm from "./MealsForm";
+import Display from "../Display/Display";
+
 const Meals = (props) => {
+    const [selectedData, setSelectedData] = useState(null);
+
+    const buttonClickHandler = (index) => {
+        const item = props.data.find((item) => item.id === index);
+        setSelectedData(item);
+    };
+
+    const closeModalHandler = () => {
+        setSelectedData(null);
+    };
+
+    const confirmHandler = () => {
+        console.log("Confirmed!");
+        setSelectedData(null);
+    };
+
     return (
-        <div style={{marginLeft:'5%'}}>
+        <div style={{ marginLeft: '5%' }}>
             {props.data.map((items) => {
                 return (
-                    <div className="content">
+                    <div className="content" key={items.id}>
                         <MealsItem
-                            key={items.id}
                             title={items.title}
                             description={items.description}
                             price={items.price}
                         />
-                        <section className="content-extra">
-                            <span className="content-special">
-                                <h5>Amount</h5>
-                                <h6> 0 </h6>
-                            </span>
-                            
-                            <span>
-                                <button>+Add</button>
-                            </span>
-                        </section>
-                    
+                        <MealsForm onChoose={() => buttonClickHandler(items.id)} />
                     </div>
-                
                 );
-
             })}
-
+            {selectedData && (
+                <Display 
+                    data={selectedData} 
+                    onConfirm={closeModalHandler} 
+                    onDone={confirmHandler} 
+                />
+            )}
         </div>
     );
-}
+};
 
 export default Meals;
