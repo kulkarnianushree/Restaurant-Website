@@ -1,22 +1,20 @@
+import './Header.css';
 import React from 'react';
-import HeaderCartButton from './HeaderCartButton'; // Note the corrected import name
-import classes from './Header.module.css';
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <React.Fragment>
-      <header className={classes.header}>
+    <div className="header">
+      <div>
         <h1>ReactMeals</h1>
-        <HeaderCartButton />
-      </header>
-      <div className={classes['main-image']}>
-        <img
-          src='https://tse2.mm.bing.net/th?id=OIP.aICzEfrqd9ilrvgIfNb5mAHaD4&pid=Api&P=0&h=180'
-          alt='delicious food'
-        />
       </div>
-    </React.Fragment>
+      <div>
+        <button className='button' type='button' onClick={props.onShow}>
+          <div>Your Cart</div>
+          <div className='cart-count'>0</div>
+        </button>
+      </div>
+    </div>
   );
-};
+}
 
 export default Header;
