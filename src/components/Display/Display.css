@@ -10,9 +10,9 @@
 
 .modal {
     position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 30vh;
+    left: 10%;
+    width: 80%;
     background: white;
     padding: 1rem;
     border-radius: 14px;
@@ -20,7 +20,24 @@
     z-index: 100;
     overflow: hidden;
 }
-.modal-content{
-    display: flex;
-    justify-content: space-between;
+.modal button{
+    display: inline;
+    
 }
+
+.modal header {
+    background: #4f005f;
+    padding: 1rem;
+    color: white;
+}
+
+.modal .modal-content {
+    padding: 1rem;
+}
+
+.modal footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+

@@ -12,7 +12,7 @@ const Meals = (props) => {
             description={items.description}
             price={items.price}
           />
-          <MealsForm onChoose={() => props.onAddToCart(items)} />
+          <MealsForm onChoose={(quantity) => props.onAddToCart(items, quantity)} />
         </div>
       ))}
     </div>

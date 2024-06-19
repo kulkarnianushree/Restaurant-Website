@@ -10,7 +10,7 @@ const Header = (props) => {
       <div>
         <button className='button' type='button' onClick={props.onShow}>
           <div>Your Cart</div>
-          <div className='cart-count'>0</div>
+          <div className='cart-count'>{props.TotalCount}</div>
         </button>
       </div>
     </div>

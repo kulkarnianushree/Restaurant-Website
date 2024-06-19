@@ -16,17 +16,21 @@ const Display = (props) => {
           <h2>Your Cart</h2>
         </header>
         <div className="modal-content">
-          {props.cart.length === 0 && <p>No items in cart.</p>}
-          {props.cart.length > 0 && (
+          {(!props.cart || props.cart.length === 0) && <p>No items in cart.</p>}
+          {props.cart && props.cart.length > 0 && (
             <ul>
               {props.cart.map(item => (
-                <li key={item.id}>
-                  {item.title} - {item.quantity} x {item.price}
-                </li>
+                <div key={item.id}>
+                  <li>
+                    {item.title} - {item.quantity} x {item.price}
+                  </li>
+                  <button type="button" onClick={() => props.onIncrement(item.id)}> + </button>
+                  <button type="button" onClick={() => props.onDecrement(item.id)}> - </button>
+                </div>
               ))}
             </ul>
           )}
-          <div>Total Amount: ${props.cart.reduce((total, item) => total + (parseFloat(item.price.slice(1)) * item.quantity), 0)}</div>
+          <div>Total Amount: ${props.cart ? props.cart.reduce((total, item) => total + (parseFloat(item.price.slice(1)) * item.quantity), 0).toFixed(2) : '0.00'}</div>
         </div>
         <footer>
           <button type="button" onClick={props.onConfirm}>Cancel</button>
@@ -38,8 +42,8 @@ const Display = (props) => {
 
   return (
     <React.Fragment>
-      {ReactDOM.createPortal(<BackDrop onConfirm={props.onConfirm} />, document.getElementById('backdrop-root'))}
-      {ReactDOM.createPortal(<ModalOverlay onConfirm={props.onConfirm} onDone={props.onDone} />, document.getElementById('overlay-root'))}
+      {ReactDOM.createPortal(<BackDrop />, document.getElementById('backdrop-root'))}
+      {ReactDOM.createPortal(<ModalOverlay />, document.getElementById('overlay-root'))}
     </React.Fragment>
   );
 };
